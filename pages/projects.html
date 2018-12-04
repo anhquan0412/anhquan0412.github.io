@@ -1,0 +1,117 @@
+<!--
+.. title: Projects
+.. slug: projects
+.. date: 2018-12-03 10:15:31 UTC-05:00
+.. tags:
+.. category:
+.. link: 
+.. description: 
+.. type: text
+-->
+
+<br>
+<h2><a name="structured-ml">Structured Data Projects</a></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <center>
+                <a href="https://github.com/anhquan0412/talkingdata_clickfraud/blob/master/README.md">
+                    <img src="https://storage.googleapis.com/kaggle-competitions/kaggle/8540/logos/thumb76_76.png" alt="fraud" style="width:100px">
+                </a>
+                <h3><a href="https://github.com/anhquan0412/talkingdata_clickfraud/blob/master/README.md">AdTracking Fraud Detection (Kaggle)</a></h3>
+            </center>
+            <p>I performed data preprocessing, feature engineering and machine learning algorithms to predict fraudulent advertisement click and achieve top 15% result on Kaggle Private leaderboard. <a href="https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection">Competition link</a></p>
+            <p><b>Dataset type:</b> structured timeseries data of 180+ milion records timeseries data. Labels are imbalanced: only 0.2% of the dataset is made up of fradulent clicks.</p>
+            <p><b>Software, libraries and models:</b></p>
+            <ul>
+                <li><i>Python, Pandas, Sklearn, Matplotlib, Pytorch (Fastai)</i></li>
+                <li><i>XGBoost, Random Forest, Neural Network with category embeddings</i>
+            </ul>
+            
+        </div>
+
+        <div class="col-sm-4">
+            <center>
+                <a href="https://github.com/anhquan0412/google-location/blob/master/README.md">
+                    <img src="/images/google-pin.png" style="width:100px">
+                </a>
+                <h3><a href="https://github.com/anhquan0412/google-location/blob/master/README.md">Google Timeline Location Analysis</a></h3>
+            </center>
+            <p>I took a deep dive and performed intensive data analysis and visualization on unlabeled GPS dataset collected by Google Timeline application. From there I cleaned out inaccurate data features, transformed raw data into analysis-ready data and applied few clustering algorithms to identify clusters that can review user's habit and common routine.</p>
+            <p>This project is featured on <a href="https://searchbusinessanalytics.techtarget.com/feature/Reddit-and-the-aspiring-data-scientist">TechTarget analytics blog</a></p>
+            <p><b>Dataset type:</b> geographic dataset of 600K+ coordinates and metadata.</p>
+            <p><b>Software, libraries and models:</b></p>
+            <ul>
+                <li><i>Python, Pandas, Sklearn; Seaborn and Folium for interactive visualization</i></li>
+                <li><i>K-means, Meanshift</i>
+            </ul>
+            
+        </div>
+        <div class="col-sm-4">
+            <center>
+                <a href="https://github.com/anhquan0412/Predict_Future_Sales/blob/master/README.md">
+                    <img src="/images/future_sale.png" style="width:100px">
+                </a>
+                <h3><a href="https://github.com/anhquan0412/Predict_Future_Sales/blob/master/README.md">Future Sales Prediction (Kaggle)</a></h3>
+            </center>
+            <p>I built and finetuned one machine learning model to predict sales for every product and store in the next month. The final model (Light Gradient Boosting Machine) reached 7th position (out of 200) on Kaggle Public Leaderboard as of 4/16/2018. <a href="https://www.kaggle.com/c/competitive-data-science-predict-future-sales">Competition link</a></p>
+            <p><b>Dataset type:</b> structured timeseries data of 6 million records from one of the largest Russian software firms: 1C company.</p>
+            <p><b>Software, libraries and models:</b></p>
+            <ul>
+                <li><i>Python, Pandas, Sklearn, Matplotlib</i></li>
+                <li><i>Light GBM, Random Forest</i></li>
+            </ul>
+            
+        </div>
+      
+    </div>
+
+
+    
+</div>
+
+<br><hr>
+
+<h2><a name="cv-ml">Computer Vision Projects</a></h2>
+TODO
+
+<br><hr>
+
+
+
+<h2><a name="scratch-ml">"Machine Learning from Scratch" project</a></h2>
+
+<p><a href="https://github.com/anhquan0412/basic_model_scratch"><img src="/images/github_icon.png" style="height:40px;"> Github repo</a></p>
+<h4><u>1. A quick summary:</u></h4>
+<p>I didn't know much about machine learning until the last semester of my undergrad when I took a data mining class as an elective. Since then I have always been fascinated by how versatile machine learning is when it comes to solving problems. Since then I have taken several online machine learning courses such as <a href="https://www.coursera.org/learn/machine-learning">Andrew Ng's famous ML course</a> or <a href="https://course.fast.ai/">Jeremy Howard and Rachel Thomas's practical course</a>.</p> 
+<p>Using all the knowledge I have learned, I decide to rebuild some common machine learning algorithms using only Python and limited Numpy functions and compared them to existing models from popular machine learning framework such as Sklearn or Pytorch.</p>
+<p>My goal is to fully understand the algorithms and libraries I have been used for Kaggle competitions or other personal projects. So far this project has helped me tremendously in gaining insight on how these models work, what is <i>really</i> happening at each iteration, how and why models need these parameters ... and even more basic stuff such as how data comes in and out of a model or what matrix multiplication looks like in code.</p>
+<p>Some of the code might not be refactored well, but my goal is not to optimize these algorithms or to push them to production; there are already so many out there. I rather have their inner workings laid out in a transparent way so I can visit later.</p>
+
+<h4><u>2. List of algorithms implemented:</u></h4>
+<p>(Links to jupyter notebooks are included)</p>
+<ul>
+    <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/linear_regression.ipynb">Linear Regression with weight decay (L2 regularization)</a></li>
+    <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/logistic_regression.ipynb">Logistic Regression with weight decay (L2 regularization)</a></li>
+    <li>Random Forest with Permutation Feature Importances (inspired by <a href="https://explained.ai/rf-importance/index.html">Terence Parr's blog post</a>)
+        <ul>
+            <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/random_forest_regressor.ipynb">Regressor</a></li>
+            <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/random_forest_classifier.ipynb">Classifier</a></li>         
+        </ul>
+    </li>
+    <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/knn.ipynb">K Nearest Neighbors: supervised and unsupervised</a></li>
+    <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/scratch_neural_net.ipynb">(Deep) Neural Network for classification</a>
+        <ul>
+            <li>Stochastic Gradient Descent</li>
+            <li>More hidden layers can be added dynamically</li>
+            <li>Variety of activation functions + gradients (Sigmoid, Softmax, ReLU ...) customized for each hidden layer</li>
+            <li>Weight decay</li>
+            <li>Dropout</li>
+            <li><a href="https://github.com/anhquan0412/basic_model_scratch/blob/master/neural_net_optimizers.ipynb">Dynamic learning rate optimizer</a> (momentum, RMSProp and Adam)</li>
+            <li>TODO: Batchnorm</li>
+        </ul>
+    </li>
+    <li>TODO: convolution neural net</li>
+    <li>TODO: recurrent neural net</li>
+</ul>
+<br><hr>
