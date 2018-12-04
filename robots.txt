@@ -1,0 +1,4 @@
+Sitemap: http://anhquan0412.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: anhquan0412.github.io
