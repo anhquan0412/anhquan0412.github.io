@@ -123,3 +123,4 @@
 'scale_images:output/images/github_icon.png', (136192, 223)
 'scale_images:output/images/google-pin.png', (136704, 220)
 'scale_images:output/images/future_sale.png', (137216, 223)
+'copy_files:output/CNAME', (137728, 229)
