@@ -23,7 +23,7 @@ BLOG_TITLE = "QT"  # (translatable)
 SITE_URL = "http://anhquan0412.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "http://quantran.xyz/"
+# BASE_URL = "http://anhquan0412.github.io/"
 BLOG_EMAIL = "quan.tran1@outlook.com"
 BLOG_DESCRIPTION = "Quan's website to showcase his stuff"  # (translatable)
 
