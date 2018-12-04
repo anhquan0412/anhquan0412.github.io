@@ -139,8 +139,9 @@ NAVIGATION_LINKS = {
         ("/projects", "Projects"),
         ("/blog/", "Blog"),
         ("/archive/", "Archive"),
-        ("/categories/", "Tags"),
+        # ("/categories/", "Tags"),
         ("/index.html", "About Quan"),
+        ("/contact", "Contact"),
     ),
 }
 
