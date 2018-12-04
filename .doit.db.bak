@@ -83,7 +83,7 @@
 'copy_assets:output/assets/js/html5shiv-printshiv.min.js', (78848, 461)
 'copy_assets:output/assets/js/gallery.min.js', (79360, 436)
 'copy_assets:output/assets/css/code.css', (79872, 141)
-'render_pages:output/index.html', (80384, 3310)
+'render_pages:output/index.html', (80384, 3309)
 'create_bundles:output/assets/js/all.js', (83968, 274)
 'copy_assets:output/assets/css/html4css1.css', (84480, 435)
 'render_sources:output/index.md', (84992, 240)
