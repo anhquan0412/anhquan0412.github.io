@@ -95,7 +95,7 @@
 'render_taxonomies:output/rss.xml', (94208, 144)
 'copy_assets:output/assets/css/rst.css', (94720, 423)
 'render_posts:cache/pages/about-me.html', (95232, 442)
-'sitemap:output/sitemap.xml', (110592, 1116)
+'sitemap:output/sitemap.xml', (110592, 1117)
 'copy_assets:output/assets/css/nikola_ipython.css', (97280, 446)
 'copy_assets:output/assets/js/jquery.min.js', (97792, 448)
 'copy_assets:output/assets/js/popper.min.js', (98304, 448)

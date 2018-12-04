@@ -20,10 +20,10 @@ BLOG_AUTHOR = "Quan Tran"  # (translatable)
 BLOG_TITLE = "QT"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "http://anhquan0412.github.io/"
+SITE_URL = "https://anhquan0412.github.io/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "http://anhquan0412.github.io/"
+# BASE_URL = "https://anhquan0412.github.io/"
 BLOG_EMAIL = "quan.tran1@outlook.com"
 BLOG_DESCRIPTION = "Quan's website to showcase his stuff"  # (translatable)
 
