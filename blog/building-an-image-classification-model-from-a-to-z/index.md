@@ -14,7 +14,7 @@
 
 Recently I decided to take a serious dive into computer vision and took [Fast.ai](https://www.fast.ai) new MOOC course (will be available in early 2019) which is built on top of Pytorch v1.0 (released on Oct 2018). If you are not familiar, Fastai library includes state-of-the-art deep learning technique out of the box which make it as easy to use as possible, whilst remaining easy to customize for researchers wanting to explore. To learn more about this new release, visit [Fastai blog](https://www.fast.ai/2018/10/02/fastai-ai/)
 
-As a result, I built a simple yet effective deep learning model to identify which of these 10 animated classic movies (4 from Ghibli Studios, 6 from Disney) a picture belongs to and publish it as a simple web application
+As a result, I built a simple yet effective deep learning model to identify which of these 10 animated classic movies (4 from Ghibli Studios, 6 from Disney) a picture belongs to and publish it as a simple web application.
 
 <img src="/images/animation-blog/castle-poster.jpg" width="200" height="333"/>
 <img src="/images/animation-blog/howl-poster.jpg" width="200" height="333"/>
