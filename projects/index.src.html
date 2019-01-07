@@ -78,8 +78,8 @@
                 </a>
                 <h3><a href="/blog/building-an-image-classification-model-from-a-to-z/">Animated Movie Classification</a> + <a href="http://animation-classification.us-east-1.elasticbeanstalk.com/">live demo</a></h3>
             </center>
-            <p>I built a deep learning model to predict which of 10 animated classic movies (4 from Ghibli Studios, 6 from Disney) a picture belongs to, and 
-                published it as a web application that you can test <a href="">here</a>. 
+            <p>I built a deep learning model to identify a scene/character from 10 animated classic movies (4 from Ghibli Studios, 6 from Disney) and 
+                published it as a web application that you can test <a href="http://animation-classification.us-east-1.elasticbeanstalk.com/">here</a>. 
             </p>
 
             <p>I also write a <a href="/blog/building-an-image-classification-model-from-a-to-z/">blog</a> to show how I built it and how I debug my model using Grad-CAM visualization technique.
@@ -87,8 +87,9 @@
             <p><b>Dataset type:</b> data collected from movie frames and internet</p>
             <p><b>Software, libraries and models:</b></p>
             <ul>
-                <li><i>For image preprocessing: skimage</i></li>
-                <li><i>For training and visualization: Fastai v1 (Pytorch), Matplotlib</i></li>
+                <li>For image preprocessing:<i> skimage</i></li>
+                <li>For training and visualization:<i> Fastai v1 (Pytorch) using Resnet50 architecture, Matplotlib</i></li>
+                <li>For deployment: <i>Docker, Starlette.io framework & Uvicorn ASGI server, hosted by Amazon Beanstalk</i></li>
             </ul>
         </div>
     </div>
