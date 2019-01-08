@@ -10,7 +10,7 @@
 -->
 
 <p><a href="https://github.com/anhquan0412/animation-classification"><img src="/images/github_icon.png" style="height:40px;"> Github repo</a></p>
-[Live Demo](http://animation-classification.us-east-1.elasticbeanstalk.com/)
+[Live Demo on Render](https://animation-demo.app.render.com/)
 
 Recently I decided to take a serious dive into computer vision and took [Fast.ai](https://www.fast.ai) new MOOC course (will be available in early 2019) which is built on top of Pytorch v1.0 (released on Oct 2018). If you are not familiar, Fastai library includes state-of-the-art deep learning technique out of the box which make it as easy to use as possible, whilst remaining easy to customize for researchers wanting to explore. To learn more about this new release, visit [Fastai blog](https://www.fast.ai/2018/10/02/fastai-ai/)
 
