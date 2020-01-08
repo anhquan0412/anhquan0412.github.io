@@ -94,6 +94,7 @@
         <!--Body content-->
         
         
+        
 <article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Projects</a></h1>
 
         
@@ -186,6 +187,29 @@
 </div>
 
 <br><hr>
+<h2><u><a name="nlp-ml">Natural Language Processing Projects</a></u></h2>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+	    <center>
+	        <a href="www.github.com/anhquan0412/fastai-tabular-text-demo">
+		    <img src="../images/github_icon.png" style="width:100px"></a>
+		<h3><a href="www.github.com/anhquan0412/fastai-tabular-text-demo">End-to-end deep learning for tabular and text</a></h3>
+	    </center>
+	    <p>I create a data module to handle text data and tabular data (metadata) and built a joint deep learning architecture which combines a recurrent neural network model (AWD-LSTM) and multi-layer perceptron with categorical embedding in order to train both types of data efficiently.
+	    </p>
+	    <p>You can follow the discussion on <a href="https://forums.fast.ai/t/build-mixed-databunch-and-train-end-to-end-model-for-tabular-categorical-continuous-data-and-text-data/43155">fastai forum</a></p>
+	    <p>This architecture is adopted by Reply.ai to improve customer experience with better ticket classification. Read Reply.ai TowardDataScience's article <a href="https://towardsdatascience.com/next-best-action-prediction-with-text-and-metadata-building-an-agent-assistant-81117730be6b">here</a></p>
+	    <p><b>Dataset type:</b> model is tested on Kaggle PetFinder and Kaggle Mercari Price datasets</p>
+	    <p><b>Sofware, libraries and models:</b></p>
+	    <ul>
+<li>Python, Pytorch (Fastai)</li>
+		<li>AWD-LSTM, ULMFiT, Neural network with category embeddings</li>
+	    </ul>
+</div>
+    </div>
+</div>
+<br><hr>
 <h2><u><a name="scratch-ml">"Machine Learning from Scratch" project</a></u></h2>
 
 <p><a href="https://github.com/anhquan0412/basic_model_scratch"><img src="../images/github_icon.png" style="height:40px;"> Github repo</a></p>
@@ -220,8 +244,7 @@
             <li>TODO: Batchnorm</li>
         </ul>
 </li>
-    <li>TODO: convolution neural net</li>
-    <li>TODO: recurrent neural net</li>
+    
 </ul>
 <br><hr>
 </div>
@@ -230,7 +253,7 @@
 </article><!--End of body content--><footer id="footer"><div class="text-center">
 <p>
 <span class="fa-stack fa-2x">
-  <a href="https://docs.google.com/document/d/1V2WP165cyDVqzbyJbiTqEe0vTF_Sv-HfVj93GFZiwNg/edit?usp=sharing">
+  <a href="https://docs.google.com/document/d/1Bq4HIGhcmB8BeIucMhCsZ9BvHAg_XHJvX_WNS1xiMn8/edit?usp=sharing">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-id-card fa-inverse fa-stack-1x"></i>
   </a>
@@ -267,7 +290,7 @@
 </span>
 </p>
 <p>
-  Contents © 2019  <a href="mailto:quan.tran1@outlook.com">Quan Tran</a>
+  Contents © 2020  <a href="mailto:quan.tran1@outlook.com">Quan Tran</a>
   —
   
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -278,15 +301,13 @@
 </div>
 
             
+            
         </footer>
 </div>
 </div>
 
 
-        <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><script>
+        <script src="../assets/js/all-nocdn.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
         captions: function(element) {

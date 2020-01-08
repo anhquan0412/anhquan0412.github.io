@@ -92,10 +92,11 @@ Recently I decided to take a serious dive into computer vision and took Fast.ai 
         <!--Body content-->
         
         
+        
 <article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Build an image classification model from A to Z (with live demo)</a></h1>
 
         <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
                     Quan Tran
             </span></p>
             <p class="dateline">
@@ -161,7 +162,7 @@ Recently I decided to take a serious dive into computer vision and took Fast.ai 
 
 <p><strong>A better way to collect high-quality images is to get them from the source itself: the movie frames</strong>. So I ended up renting DVD movies from the store and use VLC to collect the frames. This process is quite easy (<a href="https://www.raymond.cc/blog/extract-video-frames-to-images-using-vlc-media-player/">guide</a>) and there is even a command line to automate the task. You can specify the 'scene-ratio' to save an image every X number of frames. All of these animated movies play at 24 frame/second, so I set scene-ratio=48 to save an image every 2 seconds -&gt; you will get roughly 3600 images for a 120-minute movie. Of course you can reduce scene-ratio to get more images. You can also specify image height and width to resize the frame to your liking. </p>
 <p>Full VLC commane line can be found <a href="https://wiki.videolan.org/VLC_command-line_help">here</a></p>
-<pre class="code literal-block"><span></span>vlc.exe “C:\myvideo.mp4” --video-filter=scene --vout=dummy --scene-ratio=40 --scene-width=700 --scene-height=400 --scene-path=”C:\\SavedFrames” vlc://quit
+<pre class="code literal-block"><span></span><span class="err">vlc.exe “C:\myvideo.mp4” --video-filter=scene --vout=dummy --scene-ratio=40 --scene-width=700 --scene-height=400 --scene-path=”C:\\SavedFrames” vlc://quit</span>
 </pre>
 
 
@@ -241,22 +242,22 @@ Recently I decided to take a serious dive into computer vision and took Fast.ai 
 <li>Prepare data loader</li>
 </ul>
 <p>We will use DataBunch container which holds training, validation, test data as well as information about image transformation, batch size and image size. We will use biggest possible batch size that can still fit in GPU, and we use image size of 300.</p>
-<pre class="code literal-block"><span></span>data=ImageDataBunch.from_folder(path,train='train',valid='valid',bs=78,size=300,ds_tfms = get_transforms()).normalize(imagenet_stats)
-learn = create_cnn(data,models.resnet50, metrics=accuracy)
+<pre class="code literal-block"><span></span><span class="err">data=ImageDataBunch.from_folder(path,train='train',valid='valid',bs=78,size=300,ds_tfms = get_transforms()).normalize(imagenet_stats)</span>
+<span class="err">learn = create_cnn(data,models.resnet50, metrics=accuracy)</span>
 </pre>
 
 
 <p>To make training even better on GPU, we will use <a href="http://on-demand.gputechconf.com/gtc/2018/video/S81012/">mixed precision</a>. The idea is to do forward pass and gradient computation in 16-bits floats to reduce memory usage, and do weight update in 32-bits floats for precision. With mixed precision I can double my batch size from 40 to 80 on my GTX1080. Using Fastai library, this is all you need</p>
-<pre class="code literal-block"><span></span>learn = learn.to_fp16()
+<pre class="code literal-block"><span></span><span class="err">learn = learn.to_fp16()</span>
 </pre>
 
 
 <p><br></p>
 <h4>Stage 1: Finetune the last layer with 'one cycle' policy</h4>
 <p>We finetune the last layer and leave the rest untouched. This will help model 'warm up' and get reasonable weights before we train all the layers. We use Leslie Smith's 1cycle policy (you can take a look at this <a href="https://sgugger.github.io/the-1cycle-policy.html">blog</a> by Fastai researcher Sylvain Gugger). In short, this allows us to train the model quickly using high learning rates while reducing other forms of regularizations to an optimal balance point. This works in practice as Fastai team achieved top 3 positions in DawnBENCH competition (fastest training time on ImageNet) and countless other examples/projects mentioned in <a href="https://forums.fast.ai">Fastai forums</a></p>
-<pre class="code literal-block"><span></span>learn.freeze()
-learn.fit_one_cycle(cyc_len=8,max_lr=8e-03)
-learn.save('stage1-300-8epochs')
+<pre class="code literal-block"><span></span><span class="err">learn.freeze()</span>
+<span class="err">learn.fit_one_cycle(cyc_len=8,max_lr=8e-03)</span>
+<span class="err">learn.save('stage1-300-8epochs')</span>
 </pre>
 
 
@@ -265,9 +266,9 @@ learn.save('stage1-300-8epochs')
 <p><br></p>
 <h4>Stage 2: Train every layers</h4>
 <p>After stage 1, we can save the weights and use it for stage 2 where we also finetune the lower layers in the architecture. We use <strong>discriminative learning rate</strong> (lower learning rate in lower layers) because lower layers are already good at detecting simple features such as lines, edges ... thanks to transfer learning, therefore we don't want to destroy them with high learning rate.</p>
-<pre class="code literal-block"><span></span>learn.unfreeze()
-learn.fit_one_cycle(5,max_lr=slice(8e-06,1e-3))
-learn.save('stage2-300-5epochs')
+<pre class="code literal-block"><span></span><span class="err">learn.unfreeze()</span>
+<span class="err">learn.fit_one_cycle(5,max_lr=slice(8e-06,1e-3))</span>
+<span class="err">learn.save('stage2-300-5epochs')</span>
 </pre>
 
 
@@ -276,14 +277,14 @@ learn.save('stage2-300-5epochs')
 <p><br></p>
 <h4>Increase image size and start all over</h4>
 <p>To improve model and avoid overfitting problem, we can increase the image size to 350 (aka <strong>progressive resizing</strong>). Model will now see better, more detailed images it has seen before, thus model will have to forget some of the details -&gt; generalize better. We can perform stage 1 and stage 2 steps again. For this dataset, after progressive resizing, doing stage 2 does not seem to help anymore so we will stop at stage 1.</p>
-<pre class="code literal-block"><span></span>data=ImageDataBunch.from_folder(path,train='train',valid='valid',bs=52,size=350,ds_tfms = get_transforms()).normalize(imagenet_stats)
-learn = create_cnn(data,models.resnet50, metrics=accuracy)
-learn.load('stage2-300-5epochs')
+<pre class="code literal-block"><span></span><span class="k">data</span><span class="o">=</span><span class="n">ImageDataBunch</span><span class="p">.</span><span class="n">from_folder</span><span class="p">(</span><span class="n">path</span><span class="p">,</span><span class="n">train</span><span class="o">=</span><span class="s1">'train'</span><span class="p">,</span><span class="k">valid</span><span class="o">=</span><span class="s1">'valid'</span><span class="p">,</span><span class="n">bs</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span><span class="k">size</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span><span class="n">ds_tfms</span> <span class="o">=</span> <span class="n">get_transforms</span><span class="p">()).</span><span class="n">normalize</span><span class="p">(</span><span class="n">imagenet_stats</span><span class="p">)</span>
+<span class="n">learn</span> <span class="o">=</span> <span class="n">create_cnn</span><span class="p">(</span><span class="k">data</span><span class="p">,</span><span class="n">models</span><span class="p">.</span><span class="n">resnet50</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="n">learn</span><span class="p">.</span><span class="k">load</span><span class="p">(</span><span class="s1">'stage2-300-5epochs'</span><span class="p">)</span>
 
-#stage 1
-learn.freeze()
-learn.fit_one_cycle(8,max_lr=3e-03)
-learn.save('stage1-350-8epochs')
+<span class="o">#</span><span class="n">stage</span> <span class="mi">1</span>
+<span class="n">learn</span><span class="p">.</span><span class="k">freeze</span><span class="p">()</span>
+<span class="n">learn</span><span class="p">.</span><span class="n">fit_one_cycle</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="n">max_lr</span><span class="o">=</span><span class="mi">3</span><span class="n">e</span><span class="o">-</span><span class="mi">03</span><span class="p">)</span>
+<span class="n">learn</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="s1">'stage1-350-8epochs'</span><span class="p">)</span>
 </pre>
 
 
@@ -296,18 +297,18 @@ learn.save('stage1-350-8epochs')
 <br><p>While training our deep learning model, <strong>it is important to evaluate its predictions to make sure our training is done correctly and make improvements</strong>. There are several way to do this: plot confusion matrix and examine top mispredictions, determine which classes the model have trouble distinguishing, plot few example images and make educated guesses on what goes wrong... These steps are commonly used, but they might not truly reflect what the model knows. Sometimes we can have a wrong guess, make a wrong adjustment and have to start all over again (personally I have made this mistake so many times, not on this projects but many other ML projects in general). </p>
 <p>Fortunately, there is <a href="https://arxiv.org/abs/1610.02391">Grad-CAM</a> paper which proposed a technique for producing visual explanations from a large class of CNN-based models, making them more transparent. The idea is to use gradients of any target concept (layer) flowing into the final convolutional layer to highlight important regions in the image for predicting classes. And to isolate important regions, we can simply <strong>retain the positive contributions to the gradient while backpropagating</strong> (introduced in <a href="https://arxiv.org/abs/1412.6806">Striving for Simplicity: All Convolutional Net</a> paper). This isolation step will be called 'guided backprop' in this blog post.</p>
 <p>Grad-CAM and Guided backprop are not integrated in Fastai library but thanks to <a href="https://docs.fast.ai/callbacks.hooks.html">fastai.callbacks.Hooks</a> which are built on top of PyTorch hooks and <a href="https://forums.fast.ai/t/visualizing-intermediate-layers-a-la-zeiler-and-fergus/28140/34?u=quan.tran">this discussion</a>, the process of calculating gradient with respect to target layer becomes easier. In fact, I wrote some code and put them in a class so you can generate Grad-CAM + Guided backprop in just few line of code. (<a href="https://github.com/anhquan0412/animation-classification/blob/master/gradcam.py">code</a> / <a href="https://github.com/anhquan0412/animation-classification/blob/master/gradcam-usecase.ipynb">example</a>)</p>
-<pre class="code literal-block"><span></span># from a single Image object. 
-img = open_image(path_to_image);
-gcam = GradCam.from_one_img(learn,img)
-gcam.plot()
+<pre class="code literal-block"><span></span><span class="err"># from a single Image object. </span>
+<span class="err">img = open_image(path_to_image);</span>
+<span class="err">gcam = GradCam.from_one_img(learn,img)</span>
+<span class="err">gcam.plot()</span>
 </pre>
 
 
 <p>Here is an example to show how model distinguishes between 2 different characters in a same image using Grad-CAM.</p>
 <p>Note that my implementation is tight to Fastai library so you need to <a href="https://github.com/fastai/fastai#installation">install Fastai library</a> in your machine before using this)</p>
-<pre class="code literal-block"><span></span>img = open_image(img_path);
-gcam = GradCam.from_one_img(learn,img,label1='mulan',label2='pocahontas')
-gcam.plot(plot_hm=True,plot_gbp=False)
+<pre class="code literal-block"><span></span><span class="err">img = open_image(img_path);</span>
+<span class="err">gcam = GradCam.from_one_img(learn,img,label1='mulan',label2='pocahontas')</span>
+<span class="err">gcam.plot(plot_hm=True,plot_gbp=False)</span>
 </pre>
 
 
@@ -397,7 +398,7 @@ gcam.plot(plot_hm=True,plot_gbp=False)
         </section></article><script>var disqus_shortname="quantran-xyz";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer"><div class="text-center">
 <p>
 <span class="fa-stack fa-2x">
-  <a href="https://docs.google.com/document/d/1V2WP165cyDVqzbyJbiTqEe0vTF_Sv-HfVj93GFZiwNg/edit?usp=sharing">
+  <a href="https://docs.google.com/document/d/1Bq4HIGhcmB8BeIucMhCsZ9BvHAg_XHJvX_WNS1xiMn8/edit?usp=sharing">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-id-card fa-inverse fa-stack-1x"></i>
   </a>
@@ -434,7 +435,7 @@ gcam.plot(plot_hm=True,plot_gbp=False)
 </span>
 </p>
 <p>
-  Contents © 2019  <a href="mailto:quan.tran1@outlook.com">Quan Tran</a>
+  Contents © 2020  <a href="mailto:quan.tran1@outlook.com">Quan Tran</a>
   —
   
 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
@@ -445,15 +446,13 @@ gcam.plot(plot_hm=True,plot_gbp=False)
 </div>
 
             
+            
         </footer>
 </div>
 </div>
 
 
-        <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
-    moment.locale("en");
-    fancydates(0, "YYYY-MM-DD HH:mm");
-    </script><!-- end fancy dates --><script>
+        <script src="../../assets/js/all-nocdn.js"></script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
         captions: function(element) {
