@@ -933,7 +933,7 @@ CONTENT_FOOTER = '''
 <div class="text-center">
 <p>
 <span class="fa-stack fa-2x">
-  <a href="https://docs.google.com/document/d/1V2WP165cyDVqzbyJbiTqEe0vTF_Sv-HfVj93GFZiwNg/edit?usp=sharing">
+  <a href="https://docs.google.com/document/d/1Bq4HIGhcmB8BeIucMhCsZ9BvHAg_XHJvX_WNS1xiMn8/edit?usp=sharing">
     <i class="fa fa-circle fa-stack-2x"></i>
     <i class="fa fa-id-card fa-inverse fa-stack-1x"></i>
   </a>
